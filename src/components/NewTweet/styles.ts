@@ -7,7 +7,6 @@ export const TweetContainer = styled.div`
     border-bottom: 1px solid var(--outline);
     border-radius: 5px;
     padding: 20px;
-    margin-bottom: 20px;
     background-color: #fff;
 
     position: relative;
