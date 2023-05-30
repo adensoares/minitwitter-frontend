@@ -1,0 +1,20 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from '../components/Layout';
+
+
+
+function AppRoutes() {
+  return (
+    <Router>
+        <Routes>
+            <Route path="/" element={<Layout isAuthenticated={false} handleSignout={function (): void {
+                    throw new Error('Function not implemented.');
+                } } />} />
+        </Routes>
+
+    </Router>
+  );
+}
+
+export default AppRoutes;
