@@ -32,30 +32,26 @@ function Modal({ showModal = false, setShowModal, handleAuthentication }: ModalP
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Verificar se é formulário de login
     if (activeForm === AuthForm.SignIn) {
       try {
-        // Enviar solicitação de autenticação para o backend
         const response = await signin(email, password);
-        
-        // Chamar a função de autenticação passada como prop
         handleAuthentication(response.token, response.refreshToken);
-        
-        // Fechar o modal
         handleCloseModal();
       } catch (error) {
         console.log(error);
       }
     } else if (activeForm === AuthForm.SignUp) {
-    try {
-      const response = await signup(fullName, email, password);
-      handleAuthentication(response.token, response.refreshToken);
-      handleCloseModal();
-    } catch (error) {
-      console.log(error);
+      try {
+        await signup(fullName, email, password);
+        const response = await signin(email, password); // Autenticar automaticamente após o cadastro
+        handleAuthentication(response.token, response.refreshToken);
+        handleCloseModal();
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
-};
+  };
+  
   
 
   return (

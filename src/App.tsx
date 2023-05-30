@@ -23,8 +23,8 @@ function App() {
     setRefreshToken(refreshToken);
     
     const user = await getCurrentUser();
-    setUsername(user.username);
-    localStorage.setItem('username', user.username);
+    setUsername(user.full_name);
+    localStorage.setItem('username', user.full_name);
   
     const followedUsers = await getFollowedUsers();
     setFollowedUsers(followedUsers);
